@@ -3,7 +3,20 @@ const HTML = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovreign AI \u2014 Malaysia Content Moderation</title>
+<title>Sovreign AI \u2014 Malaysia Content Moderation | Straits AI</title>
+<meta name="description" content="Analyze Malaysian text for harmful content using a fine-tuned Qwen3 0.6B model with chain-of-thought reasoning. Detects communal hostility, religious provocation, political sarcasm, and coded euphemisms across Bahasa Malaysia, English, Chinese, Tamil, and mixed code-switching.">
+<meta name="keywords" content="content moderation, Malaysia, AI safety, NLP, Bahasa Malaysia, hate speech detection, communal hostility, Qwen3, fine-tuning, Straits AI">
+<meta name="author" content="Straits AI">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sovreign.straits-ai.com">
+<meta property="og:title" content="Sovreign AI \u2014 Malaysia Content Moderation">
+<meta property="og:description" content="Fine-tuned Qwen3 0.6B model with chain-of-thought reasoning for Malaysia-specific content moderation. 73% accuracy on handcrafted edge cases. Try the live demo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sovreign.straits-ai.com">
+<meta property="og:site_name" content="Straits AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sovreign AI \u2014 Malaysia Content Moderation">
+<meta name="twitter:description" content="Fine-tuned Qwen3 0.6B with CoT reasoning for Malaysia-specific content moderation. Try the live demo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -376,11 +389,63 @@ const HTML = `<!DOCTYPE html>
   .rewrite-card p { font-size: 14px; line-height: 1.7; font-weight: 300; }
   footer {
     text-align: center;
-    padding: 32px;
+    padding: 40px 32px;
     border-top: 1px solid var(--border);
     margin-top: 64px;
   }
   footer p { font-size: 12px; color: var(--text-dim); font-weight: 300; letter-spacing: 0.5px; }
+  .cta-section {
+    text-align: center;
+    margin-top: 48px;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.05) 0%, rgba(212, 168, 83, 0.02) 100%);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+    border-radius: var(--radius);
+    animation: fadeUp 0.6s ease-out 0.3s both;
+  }
+  .cta-section h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 32px;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .cta-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 4px 20px var(--accent-glow);
+    transform: translateY(-1px);
+  }
+  .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 12px; }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -403,7 +468,7 @@ const HTML = `<!DOCTYPE html>
 </head>
 <body>
 <header>
-  <span class="logo">Sovreign</span>
+  <a href="https://straits-ai.com" target="_blank" rel="noopener" style="text-decoration:none"><span class="logo">Sovreign</span></a>
   <span class="logo-sub">Content Moderation</span>
   <span class="model-badge">Qwen3 0.6B CoT &middot; 73% accuracy</span>
 </header>
@@ -436,9 +501,19 @@ const HTML = `<!DOCTYPE html>
     <div class="loading-text">Analyzing content with chain-of-thought reasoning...</div>
   </div>
   <div class="result-section" id="results"></div>
+  <div class="cta-section">
+    <h3>Need AI Safety for Your Platform?</h3>
+    <p>Sovreign is built by Straits AI \u2014 we build intelligent systems for Southeast Asian businesses. From content moderation to document intelligence, we can help.</p>
+    <a href="https://straits-ai.com" target="_blank" rel="noopener" class="cta-btn">Learn More About Straits AI</a>
+  </div>
 </main>
 <footer>
   <p>Sovreign AI &middot; Malaysia Content Moderation &middot; Qwen3 0.6B fine-tuned with CoT reasoning</p>
+  <div class="footer-links">
+    <a href="https://straits-ai.com" target="_blank" rel="noopener">Straits AI</a>
+    <a href="https://github.com/Straits-AI/sovreign-ai" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://huggingface.co/wms2537/qwen3-0.6b-malaysia-moderation-cot" target="_blank" rel="noopener">Model on HuggingFace</a>
+  </div>
 </footer>
 <script>
 const EXAMPLES = [

@@ -1,6 +1,33 @@
 # Sovreign AI
 
-Malaysia moderation dataset pipeline for generating synthetic moderation examples. Produces a 7,000+ example dataset for fine-tuning a Malaysia-aligned judge + rewrite model.
+**Malaysia-aligned AI content moderation with chain-of-thought reasoning.**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-sovreign.straits--ai.com-d4a853?style=for-the-badge)](https://sovreign.straits-ai.com)
+[![Model](https://img.shields.io/badge/HuggingFace-Model-yellow?style=for-the-badge&logo=huggingface)](https://huggingface.co/wms2537/qwen3-0.6b-malaysia-moderation-cot)
+[![License](https://img.shields.io/badge/Built%20by-Straits%20AI-blue?style=for-the-badge)](https://straits-ai.com)
+
+Sovreign is a complete pipeline for building Malaysia-specific content moderation models. It includes a **7,267-example synthetic dataset**, **chain-of-thought fine-tuning** on Qwen3 0.6B, and a **production-deployed demo** — all designed around 8 constitutional principles derived from Malaysia's Federal Constitution and social fabric.
+
+**The production model achieves 73% accuracy on 93 handcrafted edge cases** spanning sarcasm, coded euphemisms, communal hostility, quoted offensive speech, and religious provocation — the hardest cases in Malaysian content moderation.
+
+### Key Features
+
+- **Chain-of-thought reasoning** — the model explains *why* content is safe or unsafe before judging, enabling transparent moderation decisions
+- **8 Malaysia-specific principles** (MY-1 through MY-8) — from communal harmony to privacy protection, grounded in Malaysian constitutional values
+- **5 languages** — Bahasa Malaysia, English, Chinese, Tamil, and code-switching mixtures
+- **4 severity levels** (S0-S3) — from safe everyday speech to severe incitement
+- **Full rewrite suggestions** — not just detection, but constructive alternatives for flagged content
+- **ONNX-exportable** — Qwen3 0.6B uses standard softmax attention, enabling browser/edge inference
+
+### Architecture
+
+```
+User → Cloudflare Worker (frontend + proxy) → HuggingFace Space (FastAPI) → HF Hub (model weights)
+```
+
+Built by [**Straits AI**](https://straits-ai.com) — intelligent systems for Southeast Asian businesses.
+
+---
 
 ## Project Structure
 
@@ -387,12 +414,13 @@ Use `notebooks/eval_compare.ipynb` to compare both models on the test set (725 e
 
 ## Live Demo
 
-**Web demo:** https://sovreign-moderation.swmengappdev.workers.dev
+**Try it now:** [**sovreign.straits-ai.com**](https://sovreign.straits-ai.com)
 
-Architecture:
-- **Cloudflare Worker** serves the frontend UI and proxies API calls
-- **HuggingFace Space** ([wms2537/sovreign-moderation](https://huggingface.co/spaces/wms2537/sovreign-moderation)) runs the FastAPI inference server
-- **Model:** [wms2537/qwen3-0.6b-malaysia-moderation-cot](https://huggingface.co/wms2537/qwen3-0.6b-malaysia-moderation-cot) — merged Qwen3 0.6B with LoRA adapter
+| Component | URL | Role |
+|-----------|-----|------|
+| Frontend + proxy | [sovreign.straits-ai.com](https://sovreign.straits-ai.com) | Cloudflare Worker |
+| Inference backend | [wms2537/sovreign-moderation](https://huggingface.co/spaces/wms2537/sovreign-moderation) | HuggingFace Space (FastAPI) |
+| Model weights | [wms2537/qwen3-0.6b-malaysia-moderation-cot](https://huggingface.co/wms2537/qwen3-0.6b-malaysia-moderation-cot) | Merged Qwen3 0.6B + LoRA |
 
 Run locally:
 ```bash

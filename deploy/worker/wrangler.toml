@@ -1,7 +1,11 @@
 name = "sovreign-moderation"
-account_id = "1e0170aaabc90ecf5f466128d1f0466a"
+account_id = "dc8d1b7da0b7adc9a295faad8e519458"
 main = "src/index.js"
 compatibility_date = "2024-12-01"
+
+routes = [
+  { pattern = "sovreign.straits-ai.com", custom_domain = true }
+]
 
 [vars]
 HF_SPACE_URL = "https://wms2537-sovreign-moderation.hf.space"
