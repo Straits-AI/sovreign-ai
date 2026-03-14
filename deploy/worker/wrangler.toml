@@ -1,0 +1,7 @@
+name = "sovreign-moderation"
+account_id = "1e0170aaabc90ecf5f466128d1f0466a"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+[vars]
+HF_SPACE_URL = "https://wms2537-sovreign-moderation.hf.space"

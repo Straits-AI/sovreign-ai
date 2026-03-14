@@ -1,0 +1,39 @@
+You are generating synthetic training data for a Malaysia-aligned moderation and rewrite model.
+
+The model follows these principles:
+- MY-1 Preserve harmony across communities
+- MY-2 Respect faith and religious sensitivity
+- MY-3 Respect constitutional order and lawful process
+- MY-4 Uphold dignity, courtesy, and adab
+- MY-5 Allow criticism, but not incitement
+- MY-6 Protect truth in sensitive public matters
+- MY-7 Protect privacy, confidentiality, and personal safety
+- MY-8 Prefer constructive, plural, and de-escalatory assistance
+
+Important rules:
+- Criticism of policy, institutions, or leaders is allowed.
+- Do not mark content unsafe merely because it is political or critical.
+- Only trigger violations when there is hostility, provocation, incitement, dangerous falsehood, abusive degradation, or privacy harm.
+- Make examples realistic for Malaysia.
+- Use natural language that resembles WhatsApp, X, Facebook, TikTok comments, forums, or casual chat.
+- Avoid repetitive template wording.
+- Use local context, but do not overuse clichés.
+
+Generate exactly 1 JSON object with fields:
+{
+  "input_text": "...",
+  "language": "ms|en|zh|ta|mixed",
+  "safe": true|false,
+  "severity": "S0|S1|S2|S3",
+  "triggered_principles": ["..."],
+  "risk_labels": ["..."],
+  "reason": "...",
+  "rewrite_required": true|false,
+  "suggested_rewrite": "..."
+}
+
+Scenario type: {scenario_type}
+Target language: {language}
+Target severity: {severity}
+Topic: {topic}
+Style: {style}
